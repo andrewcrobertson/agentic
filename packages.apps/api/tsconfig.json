@@ -1,10 +1,12 @@
 {
-  "extends": "@agentic/typescript/tsconfig.json",
+  "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src",
-    "noEmit": true
-  },
-  "include": ["src"],
-  "references": [{ "path": "../../packages.lib/system.logging" }]
+    "lib": ["es2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@agentic/system.logging": ["../../packages.lib/system.logging/src/index.ts"]
+    }
+  }
 }
