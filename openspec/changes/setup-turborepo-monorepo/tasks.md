@@ -57,8 +57,8 @@
 
 ## 6. GitHub Actions Workflows
 
-- [ ] 6.1 Create `.github/workflows/ci.yml` — triggers on push/PR to `main`; sets up Node 22 + pnpm; runs `pnpm turbo lint typecheck test build`; caches turbo outputs via `actions/cache`
-- [ ] 6.2 Create `.github/workflows/publish.yml` — triggers on push to `main`; uses `@changesets/action` to open "Version Packages" PR; on changeset PR merge, publishes `@agentic/api` to GitHub Packages and builds + pushes Docker image to `ghcr.io` tagged with version and `latest`
+- [x] 6.1 Create `.github/workflows/ci.yml` — triggers on push/PR to `main`; sets up Node 22 + pnpm; runs `pnpm turbo lint typecheck test build`; caches turbo outputs via `actions/cache`
+- [x] 6.2 Create `.github/workflows/publish.yml` — triggers on push to `main`; uses `@changesets/action` to open "Version Packages" PR; on changeset PR merge, publishes `@agentic/api` to GitHub Packages and builds + pushes Docker image to `ghcr.io` tagged with version and `latest`
 
 ## 7. TypeScript Project References Wiring
 
