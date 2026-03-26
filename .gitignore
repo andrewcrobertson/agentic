@@ -1,0 +1,17 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+
+# Turbo cache
+.turbo
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Environment variables
+.env*.local
+
+# OS
+.DS_Store
