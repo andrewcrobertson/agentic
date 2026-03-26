@@ -23,15 +23,15 @@
 
 ## 3. system.logging Package
 
-- [ ] 3.1 Create `packages.lib/system.logging/package.json` (`name: "@agentic/system.logging"`, declare `exports` for ESM and CJS, add `@agentic/typescript` and `@agentic/prettier` as dev deps)
-- [ ] 3.2 Create `packages.lib/system.logging/tsconfig.json` extending `@agentic/typescript`
-- [ ] 3.3 Create `packages.lib/system.logging/vite.config.ts` in library mode outputting ESM + CJS to `dist/`
-- [ ] 3.4 Define `ILogger` interface in `src/ILogger.ts` with `info`, `warn`, `error`, `debug` methods
-- [ ] 3.5 Implement internal `class Logger implements ILogger` in `src/Logger.ts` writing structured JSON to stdout/stderr
-- [ ] 3.6 Implement `Logger.create(options: LoggerOptions): ILogger` factory in `src/Logger.ts`; do not export the class
-- [ ] 3.7 Create `src/index.ts` exporting only `ILogger`, `LoggerOptions`, and `Logger` (factory namespace)
-- [ ] 3.8 Write unit tests in `src/Logger.test.ts` covering all four log level methods and the factory
-- [ ] 3.9 Add `vitest.config.ts` and verify `pnpm turbo test` passes for this package
+- [x] 3.1 Create `packages.lib/system.logging/package.json` (`name: "@agentic/system.logging"`, declare `exports` for ESM and CJS, add `@agentic/typescript` and `@agentic/prettier` as dev deps)
+- [x] 3.2 Create `packages.lib/system.logging/tsconfig.json` extending `@agentic/typescript`
+- [x] 3.3 Create `packages.lib/system.logging/vite.config.ts` in library mode outputting ESM + CJS to `dist/`
+- [x] 3.4 Define `ILogger` interface in `src/ILogger.ts` with `info`, `warn`, `error`, `debug` methods
+- [x] 3.5 Implement internal `class Logger implements ILogger` in `src/Logger.ts` writing structured JSON to stdout/stderr
+- [x] 3.6 Implement `Logger.create(options: LoggerOptions): ILogger` factory in `src/Logger.ts`; do not export the class
+- [x] 3.7 Create `src/index.ts` exporting only `ILogger`, `LoggerOptions`, and `Logger` (factory namespace)
+- [x] 3.8 Write unit tests in `src/Logger.test.ts` covering all four log level methods and the factory
+- [x] 3.9 Add `vitest.config.ts` and verify `pnpm turbo test` passes for this package
 
 ## 4. api App
 
