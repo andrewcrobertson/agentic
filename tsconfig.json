@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages.config/typescript" },
+    { "path": "packages.lib/system.logging" },
+    { "path": "packages.apps/api" }
+  ]
+}
