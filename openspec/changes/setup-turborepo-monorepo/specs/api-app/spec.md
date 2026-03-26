@@ -60,6 +60,20 @@ The app SHALL have integration tests that start the Express server and make real
 - **WHEN** the integration test suite runs
 - **THEN** a real HTTP request to `GET /health` returns 200 with `{ "status": "ok" }`
 
+### Requirement: Vite Build
+
+The app SHALL be built with Vite in SSR mode (`build.ssr: true`), targeting Node 22. The build SHALL produce a single `dist/index.js`. Workspace dependencies (e.g. `@agentic/system.logging`) SHALL be resolved via `resolve.alias` pointing to their source `index.ts` and bundled into the output — they SHALL NOT appear in the runtime `dependencies` of the package.
+
+#### Scenario: App builds to a single file
+
+- **WHEN** `pnpm turbo build` is run for `@agentic/api`
+- **THEN** `dist/index.js` is produced as a single self-contained bundle
+
+#### Scenario: Workspace deps are bundled, not external
+
+- **WHEN** the built `dist/index.js` is inspected
+- **THEN** it contains no runtime `require`/`import` of `@agentic/` packages
+
 ### Requirement: Docker Image
 
 The app SHALL have a `Dockerfile` using a multi-stage build. The build stage SHALL use `node:22-slim`. The final runtime image SHALL contain only production dependencies and compiled output — no build tools or source files.

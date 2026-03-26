@@ -32,16 +32,48 @@ Groups workspace members by domain/type (e.g. `packages.lib/`, `packages.apps/`,
 
 ```yaml
 packages:
-  - 'packages.*/**'
+  - "packages.*/**"
 ```
 
-### Decision 3: TypeScript project references for incremental builds
+### Decision 3: Per-package `paths` mappings over TypeScript project references
 
-Each package's `tsconfig.json` references its local dependencies. This enables `tsc --build` to skip unchanged packages and is required for turbo's `typecheck` task to be accurate and fast. All packages extend `@agentic/typescript` which itself extends `@tsconfig/recommended` — minimal overrides only.
+TypeScript project references require the referenced package to be built (producing `.d.ts` files) before a consuming package can typecheck. This means `turbo typecheck` would need to depend on `^build`, making it slow and defeating its purpose as a fast feedback task.
 
-### Decision 4: Vite in library mode for `packages.lib/`
+Instead, each consuming package's `tsconfig.json` declares a `paths` entry mapping workspace dependency package names to their source `index.ts` directly:
 
-Vite's library mode produces both ESM and CJS outputs with a clean API surface. Vitest is built on Vite so the same config covers builds and tests, keeping tooling minimal.
+```json
+"paths": {
+  "@agentic/system.logging": ["../../packages.lib/system.logging/src/index.ts"]
+}
+```
+
+This lets `typecheck` run in isolation on any package without prerequisites. Each package owns its own resolution — no root `tsconfig.json` required.
+
+**Why not TypeScript project references:**
+
+- Project references require `rootDir` to be the package's own `src/`, which rejects cross-package path resolution
+- `tsc --build` with project references rebuilds on every change cycle in CI anyway
+- Turbo's task graph already handles dependency ordering for `build`
+
+**Why not a root tsconfig with `paths`:**
+
+- Centralises maintenance; every new workspace dep needs a root update
+- Couples all packages to a shared file outside their own directory
+
+### Decision 4: Vite for all package builds
+
+Vite is used as the build tool across all packages — library mode for `packages.lib/`, SSR mode for `packages.apps/`.
+
+- **Library packages** (`packages.lib/`): Vite library mode produces ESM + CJS outputs with type declarations via `vite-plugin-dts`
+- **App packages** (`packages.apps/`): Vite SSR mode (`build.ssr: true`) targets Node, externalises `node_modules`, and outputs a single bundled `dist/index.js`
+
+For app packages, the Vite `resolve.alias` config mirrors the `tsconfig.json` `paths` entries — workspace dependencies are resolved to their source at build time and bundled into the output. This means:
+
+- No runtime dependency on workspace packages in the Docker image
+- Workspace packages can stay in `devDependencies` of app packages
+- Build output is self-contained
+
+Vitest is built on Vite, so test config shares the same resolver and transform pipeline — no separate test bundler needed.
 
 ### Decision 5: Three-tier free caching
 
@@ -88,7 +120,7 @@ Drop-in `.env` loader with encryption support for committed `.env.production` fi
 ## Risks / Trade-offs
 
 - **`packages.XXX/` is non-standard** → Some turborepo examples won't map 1:1, but the workspace glob pattern is straightforward. Minor onboarding cost for new devs.
-- **Project references add config boilerplate** → Each package needs a `tsconfig.json` with `references`. Mitigated by the shared `@agentic/typescript` base keeping per-package configs minimal.
+- **Per-package `paths` require maintenance** → Each consuming package must add a `paths` entry for every workspace dep it imports, mirrored in both `tsconfig.json` and `vite.config.ts`. Low overhead now; grows linearly with dependency count.
 - **Self-hosted remote cache not implemented now** → Local caching only until team grows. Acceptable for a solo startup; adding remote cache later requires only a config change.
 - **Publishing both npm and Docker on every release** → Coupling two artifact types to one workflow. Acceptable at this scale; can be split into separate workflows later if release cadences diverge.
 

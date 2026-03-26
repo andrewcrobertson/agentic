@@ -9,10 +9,10 @@
 - **WHEN** a package's `tsconfig.json` extends `@agentic/typescript`
 - **THEN** TypeScript strict mode and recommended settings are applied without duplication
 
-#### Scenario: Project references enable incremental builds
+#### Scenario: Consuming package typechecks without a prior build
 
-- **WHEN** a package declares a `references` entry pointing to a local dependency
-- **THEN** `tsc --build` skips recompilation of unchanged referenced packages
+- **WHEN** a consuming package's `tsconfig.json` declares a `paths` entry mapping a workspace dependency to its `src/index.ts`
+- **THEN** `tsc --noEmit` resolves the dependency from source and typechecks successfully without the dependency having been built first
 
 ### Requirement: Shared ESLint Config
 
