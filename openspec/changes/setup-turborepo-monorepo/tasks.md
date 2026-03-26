@@ -1,25 +1,25 @@
 ## 1. Repo Root Scaffold
 
-- [ ] 1.1 Create `.nvmrc` with `22`
-- [ ] 1.2 Create root `package.json` with `name: "agentic"`, `private: true`, pnpm workspaces, and root dev dependencies (`turbo`, `typescript`, `husky`, `lint-staged`, `@commitlint/cli`, `@commitlint/config-conventional`, `@changesets/cli`)
-- [ ] 1.3 Create `pnpm-workspace.yaml` with glob `packages.*/**`
-- [ ] 1.4 Create `turbo.json` with pipelines: `build` (depends on `^build`, outputs `dist/**`), `dev` (cache: false), `typecheck` (depends on `^typecheck`), `lint`, `test` (depends on `build`)
-- [ ] 1.5 Create `.gitignore` (node_modules, dist, .turbo, .env*.local, *.tsbuildinfo)
-- [ ] 1.6 Initialise husky (`pnpm exec husky init`)
-- [ ] 1.7 Add `.husky/pre-commit` hook running `pnpm lint-staged`
-- [ ] 1.8 Add `.husky/commit-msg` hook running `commitlint --edit`
-- [ ] 1.9 Add `lint-staged` config to root `package.json` targeting `**/*.{ts,tsx,js,json,md,yaml,yml}`
-- [ ] 1.10 Create `.commitlintrc.json` extending `@commitlint/config-conventional`
-- [ ] 1.11 Initialise changesets (`pnpm changeset init`) and set `access: restricted` in `.changeset/config.json`
+- [x] 1.1 Create `.nvmrc` with `22`
+- [x] 1.2 Create root `package.json` with `name: "agentic"`, `private: true`, pnpm workspaces, and root dev dependencies (`turbo`, `typescript`, `husky`, `lint-staged`, `@commitlint/cli`, `@commitlint/config-conventional`, `@changesets/cli`)
+- [x] 1.3 Create `pnpm-workspace.yaml` with glob `packages.*/**`
+- [x] 1.4 Create `turbo.json` with pipelines: `build` (depends on `^build`, outputs `dist/**`), `dev` (cache: false), `typecheck` (depends on `^typecheck`), `lint`, `test` (depends on `build`)
+- [x] 1.5 Create `.gitignore` (node_modules, dist, .turbo, .env*.local, *.tsbuildinfo)
+- [x] 1.6 Initialise husky (`pnpm exec husky init`)
+- [x] 1.7 Add `.husky/pre-commit` hook running `pnpm lint-staged`
+- [x] 1.8 Add `.husky/commit-msg` hook running `commitlint --edit`
+- [x] 1.9 Add `lint-staged` config to root `package.json` targeting `**/*.{ts,tsx,js,json,md,yaml,yml}`
+- [x] 1.10 Create `.commitlintrc.json` extending `@commitlint/config-conventional`
+- [x] 1.11 Initialise changesets (`pnpm changeset init`) and set `access: restricted` in `.changeset/config.json`
 
 ## 2. Shared Config Packages
 
-- [ ] 2.1 Create `packages.config/typescript/package.json` (`name: "@agentic/typescript"`, `main: "tsconfig.json"`)
-- [ ] 2.2 Create `packages.config/typescript/tsconfig.json` extending `@tsconfig/recommended` with `composite: true`, `declaration: true`, `declarationMap: true`
-- [ ] 2.3 Create `packages.config/eslint/package.json` (`name: "@agentic/eslint"`)
-- [ ] 2.4 Create `packages.config/eslint/index.js` exporting a flat ESLint config for TypeScript
-- [ ] 2.5 Create `packages.config/prettier/package.json` (`name: "@agentic/prettier"`)
-- [ ] 2.6 Create `packages.config/prettier/index.js` exporting a Prettier config object (e.g. singleQuote, semi, printWidth)
+- [x] 2.1 Create `packages.config/typescript/package.json` (`name: "@agentic/typescript"`, `main: "tsconfig.json"`)
+- [x] 2.2 Create `packages.config/typescript/tsconfig.json` extending `@tsconfig/recommended` with `composite: true`, `declaration: true`, `declarationMap: true`
+- [x] 2.3 Create `packages.config/eslint/package.json` (`name: "@agentic/eslint"`)
+- [x] 2.4 Create `packages.config/eslint/index.js` exporting a flat ESLint config for TypeScript
+- [x] 2.5 Create `packages.config/prettier/package.json` (`name: "@agentic/prettier"`)
+- [x] 2.6 Create `packages.config/prettier/index.js` exporting a Prettier config object (e.g. singleQuote, semi, printWidth)
 
 ## 3. system.logging Package
 

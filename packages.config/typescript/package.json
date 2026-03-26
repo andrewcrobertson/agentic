@@ -1,0 +1,9 @@
+{
+  "name": "@agentic/typescript",
+  "version": "0.0.0",
+  "private": true,
+  "main": "tsconfig.json",
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.0"
+  }
+}
