@@ -67,8 +67,8 @@
 
 ## 8. Verify End-to-End
 
-- [ ] 8.1 Run `pnpm install` from root and confirm all packages install cleanly
-- [ ] 8.2 Run `pnpm turbo build` and confirm all packages build in correct order
-- [ ] 8.3 Run `pnpm turbo test` and confirm all unit and integration tests pass
-- [ ] 8.4 Run `pnpm turbo lint typecheck` and confirm no errors
-- [ ] 8.5 Make a test commit and confirm Prettier runs and commitlint validates the message
+- [x] 8.1 Run `pnpm install` from root and confirm all packages install cleanly
+- [x] 8.2 Run `pnpm turbo build` and confirm all packages build in correct order
+- [x] 8.3 Run `pnpm turbo test` and confirm all unit and integration tests pass
+- [x] 8.4 Run `pnpm turbo lint typecheck` and confirm no errors
+- [x] 8.5 Make a test commit and confirm Prettier runs and commitlint validates the message
