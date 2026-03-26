@@ -34,6 +34,9 @@ importers:
 
   packages.apps/api:
     dependencies:
+      "@agentic/system.logging":
+        specifier: workspace:*
+        version: link:../../packages.lib/system.logging
       "@dotenvx/dotenvx":
         specifier: ^1.0.0
         version: 1.57.2
@@ -47,9 +50,6 @@ importers:
       "@agentic/prettier":
         specifier: workspace:*
         version: link:../../packages.config/prettier
-      "@agentic/system.logging":
-        specifier: workspace:*
-        version: link:../../packages.lib/system.logging
       "@agentic/typescript":
         specifier: workspace:*
         version: link:../../packages.config/typescript

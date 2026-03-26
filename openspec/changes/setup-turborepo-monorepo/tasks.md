@@ -35,25 +35,25 @@
 
 ## 4. api App
 
-- [ ] 4.1 Create `packages.apps/api/package.json` (`name: "@agentic/api"`, add `express`, `@dotenvx/dotenvx` as deps; `@agentic/system.logging`, `@agentic/typescript`, `@agentic/prettier`, `@types/express`, `vitest` as dev deps)
-- [ ] 4.2 Create `packages.apps/api/tsconfig.json` extending `@agentic/typescript` with a `references` entry for `@agentic/system.logging`
-- [ ] 4.3 Create `packages.apps/api/.env` with `PORT=3000`
-- [ ] 4.4 Create `src/IServer.ts` defining an `IServer` interface with a `start(): void` method
-- [ ] 4.5 Implement `class Server implements IServer` in `src/Server.ts` — sets up Express, registers routes, logs requests
-- [ ] 4.6 Implement `Server.create(options: ServerOptions): IServer` factory; do not export the class
-- [ ] 4.7 Implement `GET /health` route handler in `src/routes/health.ts` returning `{ status: "ok" }`
-- [ ] 4.8 Create `src/composition/index.ts` that loads `.env` via `@dotenvx/dotenvx`, creates the logger, creates the server with the logger injected, and exports the composed app
-- [ ] 4.9 Create `src/index.ts` entry point that calls `composition` and starts the server
-- [ ] 4.10 Write unit tests in `src/routes/health.test.ts` testing the health handler in isolation (no server binding)
-- [ ] 4.11 Create `vitest.config.ts` for unit tests and `vitest.integration.ts` for integration tests
-- [ ] 4.12 Write integration test in `src/routes/health.integration.test.ts` that starts the server and makes a real HTTP request to `GET /health`
-- [ ] 4.13 Add `test:unit` and `test:integration` scripts to `package.json`
+- [x] 4.1 Create `packages.apps/api/package.json` (`name: "@agentic/api"`, add `express`, `@dotenvx/dotenvx` as deps; `@agentic/system.logging`, `@agentic/typescript`, `@agentic/prettier`, `@types/express`, `vitest` as dev deps)
+- [x] 4.2 Create `packages.apps/api/tsconfig.json` extending `@agentic/typescript` with a `references` entry for `@agentic/system.logging`
+- [x] 4.3 Create `packages.apps/api/.env` with `PORT=3000`
+- [x] 4.4 Create `src/IServer.ts` defining an `IServer` interface with a `start(): void` method
+- [x] 4.5 Implement `class Server implements IServer` in `src/Server.ts` — sets up Express, registers routes, logs requests
+- [x] 4.6 Implement `Server.create(options: ServerOptions): IServer` factory; do not export the class
+- [x] 4.7 Implement `GET /health` route handler in `src/routes/health.ts` returning `{ status: "ok" }`
+- [x] 4.8 Create `src/composition/index.ts` that loads `.env` via `@dotenvx/dotenvx`, creates the logger, creates the server with the logger injected, and exports the composed app
+- [x] 4.9 Create `src/index.ts` entry point that calls `composition` and starts the server
+- [x] 4.10 Write unit tests in `src/routes/health.test.ts` testing the health handler in isolation (no server binding)
+- [x] 4.11 Create `vitest.config.ts` for unit tests and `vitest.integration.ts` for integration tests
+- [x] 4.12 Write integration test in `src/routes/health.integration.test.ts` that starts the server and makes a real HTTP request to `GET /health`
+- [x] 4.13 Add `test:unit` and `test:integration` scripts to `package.json`
 
 ## 5. Docker
 
-- [ ] 5.1 Create `packages.apps/api/Dockerfile` with three stages: `build` (install all deps + build), `prune` (production deps only), `runtime` (`node:22-slim`, copy built output + prod deps, `CMD ["node", "dist/index.js"]`)
-- [ ] 5.2 Create `.dockerignore` at repo root excluding `node_modules`, `.git`, `.turbo`, `**/*.test.ts`
-- [ ] 5.3 Verify `docker build` succeeds and container responds to `GET /health`
+- [x] 5.1 Create `packages.apps/api/Dockerfile` with three stages: `build` (install all deps + build), `prune` (production deps only), `runtime` (`node:22-slim`, copy built output + prod deps, `CMD ["node", "dist/index.js"]`)
+- [x] 5.2 Create `.dockerignore` at repo root excluding `node_modules`, `.git`, `.turbo`, `**/*.test.ts`
+- [x] 5.3 Verify `docker build` succeeds and container responds to `GET /health`
 
 ## 6. GitHub Actions Workflows
 

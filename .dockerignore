@@ -1,0 +1,9 @@
+node_modules
+.git
+.turbo
+**/*.test.ts
+**/*.integration.test.ts
+**/*.tsbuildinfo
+.changeset
+openspec
+.husky
