@@ -62,8 +62,8 @@
 
 ## 7. TypeScript Project References Wiring
 
-- [ ] 7.1 Add `references` to root `tsconfig.json` pointing to all packages (for editor support)
-- [ ] 7.2 Verify `pnpm turbo typecheck` succeeds across all packages with incremental compilation
+- [x] 7.1 Add `references` to root `tsconfig.json` pointing to all packages (for editor support)
+- [x] 7.2 Verify `pnpm turbo typecheck` succeeds across all packages with incremental compilation
 
 ## 8. Verify End-to-End
 
