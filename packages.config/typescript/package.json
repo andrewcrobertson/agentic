@@ -1,5 +1,5 @@
 {
-  "name": "@agentic/typescript",
+  "name": "@andrewcrobertson/typescript",
   "version": "0.0.1",
   "private": true,
   "main": "tsconfig.json",

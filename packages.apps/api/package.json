@@ -1,5 +1,5 @@
 {
-  "name": "@agentic/api",
+  "name": "@andrewcrobertson/api",
   "version": "0.0.1",
   "type": "module",
   "main": "./dist/index.js",
@@ -17,10 +17,10 @@
     "express": "^4.18.0"
   },
   "devDependencies": {
-    "@agentic/eslint": "workspace:*",
-    "@agentic/prettier": "workspace:*",
-    "@agentic/system.logging": "workspace:*",
-    "@agentic/typescript": "workspace:*",
+    "@andrewcrobertson/eslint": "workspace:*",
+    "@andrewcrobertson/prettier": "workspace:*",
+    "@andrewcrobertson/system.logging": "workspace:*",
+    "@andrewcrobertson/typescript": "workspace:*",
     "@tsconfig/recommended": "^1.0.0",
     "@types/express": "^4.17.0",
     "@types/node": "^22.0.0",
@@ -28,5 +28,5 @@
     "vite": "^5.0.0",
     "vitest": "^2.0.0"
   },
-  "prettier": "@agentic/prettier"
+  "prettier": "@andrewcrobertson/prettier"
 }

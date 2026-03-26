@@ -1,5 +1,5 @@
 {
-  "name": "@agentic/system.logging",
+  "name": "@andrewcrobertson/system.logging",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -20,13 +20,13 @@
     "test:unit": "vitest run"
   },
   "devDependencies": {
-    "@agentic/eslint": "workspace:*",
-    "@agentic/prettier": "workspace:*",
-    "@agentic/typescript": "workspace:*",
+    "@andrewcrobertson/eslint": "workspace:*",
+    "@andrewcrobertson/prettier": "workspace:*",
+    "@andrewcrobertson/typescript": "workspace:*",
     "vite": "^5.0.0",
     "vite-plugin-dts": "^3.0.0",
     "vitest": "^2.0.0",
     "typescript": "^5.0.0"
   },
-  "prettier": "@agentic/prettier"
+  "prettier": "@andrewcrobertson/prettier"
 }

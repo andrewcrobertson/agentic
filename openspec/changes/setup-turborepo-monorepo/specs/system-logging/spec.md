@@ -6,7 +6,7 @@ The package SHALL export an `ILogger` interface with the following methods: `inf
 
 #### Scenario: Interface is the only exported type for consumers
 
-- **WHEN** a consumer imports from `@agentic/system.logging`
+- **WHEN** a consumer imports from `@andrewcrobertson/system.logging`
 - **THEN** they receive `ILogger` and `Logger` (factory namespace) — the internal class is not exported
 
 ### Requirement: Logger Factory

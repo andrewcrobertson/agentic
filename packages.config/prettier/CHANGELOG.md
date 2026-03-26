@@ -1,4 +1,4 @@
-# @agentic/prettier
+# @andrewcrobertson/prettier
 
 ## 0.0.1
 

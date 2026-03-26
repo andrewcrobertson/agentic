@@ -18,7 +18,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@agentic/system.logging': resolve(
+      '@andrewcrobertson/system.logging': resolve(
         __dirname,
         '../../packages.lib/system.logging/src/index.ts',
       ),

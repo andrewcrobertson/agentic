@@ -72,7 +72,7 @@ Husky SHALL install a `commit-msg` hook. commitlint SHALL enforce the Convention
 
 ### Requirement: Changesets Initialised
 
-`@changesets/cli` SHALL be installed at the root. A `.changeset/config.json` SHALL be present with `access: restricted` and linked to the `@agentic` scope.
+`@changesets/cli` SHALL be installed at the root. A `.changeset/config.json` SHALL be present with `access: restricted` and linked to the `@andrewcrobertson` scope.
 
 #### Scenario: Changeset can be added
 

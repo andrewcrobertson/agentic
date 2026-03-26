@@ -6,7 +6,7 @@
 
 #### Scenario: Package extends shared tsconfig
 
-- **WHEN** a package's `tsconfig.json` extends `@agentic/typescript`
+- **WHEN** a package's `tsconfig.json` extends `@andrewcrobertson/typescript`
 - **THEN** TypeScript strict mode and recommended settings are applied without duplication
 
 #### Scenario: Consuming package typechecks without a prior build

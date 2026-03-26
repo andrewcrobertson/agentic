@@ -6,7 +6,7 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@agentic/system.logging": ["../../packages.lib/system.logging/src/index.ts"]
+      "@andrewcrobertson/system.logging": ["../../packages.lib/system.logging/src/index.ts"]
     }
   }
 }

@@ -18,8 +18,8 @@ COPY packages.lib/system.logging/ ./packages.lib/system.logging/
 COPY packages.apps/api/ ./packages.apps/api/
 
 # Build dependencies then app
-RUN pnpm --filter @agentic/system.logging build
-RUN pnpm --filter @agentic/api build
+RUN pnpm --filter @andrewcrobertson/system.logging build
+RUN pnpm --filter @andrewcrobertson/api build
 
 # Stage 2: Deploy (prune to production deps using pnpm deploy)
 FROM node:22-slim AS deploy
@@ -29,7 +29,7 @@ RUN npm install -g pnpm
 WORKDIR /app
 COPY --from=build /app ./
 
-RUN pnpm --filter @agentic/api deploy --prod /deploy/api
+RUN pnpm --filter @andrewcrobertson/api deploy --prod /deploy/api
 
 # Stage 3: Runtime
 FROM node:22-slim AS runtime

@@ -1,5 +1,5 @@
 {
-  "extends": "@agentic/typescript/tsconfig.json",
+  "extends": "@andrewcrobertson/typescript/tsconfig.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",

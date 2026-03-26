@@ -1,4 +1,4 @@
-# @agentic/api
+# @andrewcrobertson/api
 
 ## 0.0.1
 

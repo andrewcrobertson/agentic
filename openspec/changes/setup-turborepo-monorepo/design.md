@@ -1,6 +1,6 @@
 ## Context
 
-Greenfield monorepo for the `agentic` project. No existing code to migrate. The goal is to establish a productive, cost-efficient foundation that scales from a solo startup to a small team without vendor lock-in.
+Greenfield monorepo for the `andrewcrobertson` project. No existing code to migrate. The goal is to establish a productive, cost-efficient foundation that scales from a solo startup to a small team without vendor lock-in.
 
 ## Goals / Non-Goals
 
@@ -15,7 +15,7 @@ Greenfield monorepo for the `agentic` project. No existing code to migrate. The 
 **Non-Goals:**
 
 - Deployment infrastructure (Kubernetes, cloud infra, etc.)
-- Publishing any packages other than `@agentic/api`
+- Publishing any packages other than `@andrewcrobertson/api`
 - Multi-environment config management beyond `.env` files
 
 ## Decisions
@@ -43,7 +43,7 @@ Instead, each consuming package's `tsconfig.json` declares a `paths` entry mappi
 
 ```json
 "paths": {
-  "@agentic/system.logging": ["../../packages.lib/system.logging/src/index.ts"]
+  "@andrewcrobertson/system.logging": ["../../packages.lib/system.logging/src/index.ts"]
 }
 ```
 

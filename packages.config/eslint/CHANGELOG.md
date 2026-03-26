@@ -1,4 +1,4 @@
-# @agentic/eslint
+# @andrewcrobertson/eslint
 
 ## 0.0.1
 

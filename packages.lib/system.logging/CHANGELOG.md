@@ -1,4 +1,4 @@
-# @agentic/system.logging
+# @andrewcrobertson/system.logging
 
 ## 0.0.1
 

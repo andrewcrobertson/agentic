@@ -1,5 +1,5 @@
 import express from 'express';
-import type { ILogger } from '@agentic/system.logging';
+import type { ILogger } from '@andrewcrobertson/system.logging';
 import type { IServer } from './IServer.js';
 import { healthHandler } from './routes/health.js';
 

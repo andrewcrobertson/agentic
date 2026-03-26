@@ -1,7 +1,7 @@
 ## 1. Repo Root Scaffold
 
 - [x] 1.1 Create `.nvmrc` with `22`
-- [x] 1.2 Create root `package.json` with `name: "agentic"`, `private: true`, pnpm workspaces, and root dev dependencies (`turbo`, `typescript`, `husky`, `lint-staged`, `@commitlint/cli`, `@commitlint/config-conventional`, `@changesets/cli`)
+- [x] 1.2 Create root `package.json` with `name: "andrewcrobertson"`, `private: true`, pnpm workspaces, and root dev dependencies (`turbo`, `typescript`, `husky`, `lint-staged`, `@commitlint/cli`, `@commitlint/config-conventional`, `@changesets/cli`)
 - [x] 1.3 Create `pnpm-workspace.yaml` with glob `packages.*/**`
 - [x] 1.4 Create `turbo.json` with pipelines: `build` (depends on `^build`, outputs `dist/**`), `dev` (cache: false), `typecheck` (depends on `^typecheck`), `lint`, `test` (depends on `build`)
 - [x] 1.5 Create `.gitignore` (node_modules, dist, .turbo, .env*.local, *.tsbuildinfo)
@@ -14,17 +14,17 @@
 
 ## 2. Shared Config Packages
 
-- [x] 2.1 Create `packages.config/typescript/package.json` (`name: "@agentic/typescript"`, `main: "tsconfig.json"`)
+- [x] 2.1 Create `packages.config/typescript/package.json` (`name: "@andrewcrobertson/typescript"`, `main: "tsconfig.json"`)
 - [x] 2.2 Create `packages.config/typescript/tsconfig.json` extending `@tsconfig/recommended` with `composite: true`, `declaration: true`, `declarationMap: true`
-- [x] 2.3 Create `packages.config/eslint/package.json` (`name: "@agentic/eslint"`)
+- [x] 2.3 Create `packages.config/eslint/package.json` (`name: "@andrewcrobertson/eslint"`)
 - [x] 2.4 Create `packages.config/eslint/index.js` exporting a flat ESLint config for TypeScript
-- [x] 2.5 Create `packages.config/prettier/package.json` (`name: "@agentic/prettier"`)
+- [x] 2.5 Create `packages.config/prettier/package.json` (`name: "@andrewcrobertson/prettier"`)
 - [x] 2.6 Create `packages.config/prettier/index.js` exporting a Prettier config object (e.g. singleQuote, semi, printWidth)
 
 ## 3. system.logging Package
 
-- [x] 3.1 Create `packages.lib/system.logging/package.json` (`name: "@agentic/system.logging"`, declare `exports` for ESM and CJS, add `@agentic/typescript` and `@agentic/prettier` as dev deps)
-- [x] 3.2 Create `packages.lib/system.logging/tsconfig.json` extending `@agentic/typescript`
+- [x] 3.1 Create `packages.lib/system.logging/package.json` (`name: "@andrewcrobertson/system.logging"`, declare `exports` for ESM and CJS, add `@andrewcrobertson/typescript` and `@andrewcrobertson/prettier` as dev deps)
+- [x] 3.2 Create `packages.lib/system.logging/tsconfig.json` extending `@andrewcrobertson/typescript`
 - [x] 3.3 Create `packages.lib/system.logging/vite.config.ts` in library mode outputting ESM + CJS to `dist/`
 - [x] 3.4 Define `ILogger` interface in `src/ILogger.ts` with `info`, `warn`, `error`, `debug` methods
 - [x] 3.5 Implement internal `class Logger implements ILogger` in `src/Logger.ts` writing structured JSON to stdout/stderr
@@ -35,8 +35,8 @@
 
 ## 4. api App
 
-- [x] 4.1 Create `packages.apps/api/package.json` (`name: "@agentic/api"`, add `express`, `@dotenvx/dotenvx` as deps; `@agentic/system.logging`, `@agentic/typescript`, `@agentic/prettier`, `@types/express`, `vitest` as dev deps)
-- [x] 4.2 Create `packages.apps/api/tsconfig.json` extending `@agentic/typescript` with a `references` entry for `@agentic/system.logging`
+- [x] 4.1 Create `packages.apps/api/package.json` (`name: "@andrewcrobertson/api"`, add `express`, `@dotenvx/dotenvx` as deps; `@andrewcrobertson/system.logging`, `@andrewcrobertson/typescript`, `@andrewcrobertson/prettier`, `@types/express`, `vitest` as dev deps)
+- [x] 4.2 Create `packages.apps/api/tsconfig.json` extending `@andrewcrobertson/typescript` with a `references` entry for `@andrewcrobertson/system.logging`
 - [x] 4.3 Create `packages.apps/api/.env` with `PORT=3000`
 - [x] 4.4 Create `src/IServer.ts` defining an `IServer` interface with a `start(): void` method
 - [x] 4.5 Implement `class Server implements IServer` in `src/Server.ts` — sets up Express, registers routes, logs requests
@@ -58,7 +58,7 @@
 ## 6. GitHub Actions Workflows
 
 - [x] 6.1 Create `.github/workflows/ci.yml` — triggers on push/PR to `main`; sets up Node 22 + pnpm; runs `pnpm turbo lint typecheck test build`; caches turbo outputs via `actions/cache`
-- [x] 6.2 Create `.github/workflows/publish.yml` — triggers on push to `main`; uses `@changesets/action` to open "Version Packages" PR; on changeset PR merge, publishes `@agentic/api` to GitHub Packages and builds + pushes Docker image to `ghcr.io` tagged with version and `latest`
+- [x] 6.2 Create `.github/workflows/publish.yml` — triggers on push to `main`; uses `@changesets/action` to open "Version Packages" PR; on changeset PR merge, publishes `@andrewcrobertson/api` to GitHub Packages and builds + pushes Docker image to `ghcr.io` tagged with version and `latest`
 
 ## 7. TypeScript Project References Wiring
 

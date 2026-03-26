@@ -1,5 +1,5 @@
 import '@dotenvx/dotenvx/config';
-import { Logger } from '@agentic/system.logging';
+import { Logger } from '@andrewcrobertson/system.logging';
 import { Server } from '../Server.js';
 
 const logger = Logger.create({ name: 'api' });

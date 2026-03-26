@@ -12,7 +12,7 @@ The app SHALL expose a `GET /health` endpoint that returns HTTP 200 with a JSON 
 
 ### Requirement: Logger Integration
 
-The app SHALL use `@agentic/system.logging` for all log output. The `ILogger` instance SHALL be created once in the composition root and injected into all components that need it.
+The app SHALL use `@andrewcrobertson/system.logging` for all log output. The `ILogger` instance SHALL be created once in the composition root and injected into all components that need it.
 
 #### Scenario: Requests are logged
 
@@ -62,17 +62,17 @@ The app SHALL have integration tests that start the Express server and make real
 
 ### Requirement: Vite Build
 
-The app SHALL be built with Vite in SSR mode (`build.ssr: true`), targeting Node 22. The build SHALL produce a single `dist/index.js`. Workspace dependencies (e.g. `@agentic/system.logging`) SHALL be resolved via `resolve.alias` pointing to their source `index.ts` and bundled into the output — they SHALL NOT appear in the runtime `dependencies` of the package.
+The app SHALL be built with Vite in SSR mode (`build.ssr: true`), targeting Node 22. The build SHALL produce a single `dist/index.js`. Workspace dependencies (e.g. `@andrewcrobertson/system.logging`) SHALL be resolved via `resolve.alias` pointing to their source `index.ts` and bundled into the output — they SHALL NOT appear in the runtime `dependencies` of the package.
 
 #### Scenario: App builds to a single file
 
-- **WHEN** `pnpm turbo build` is run for `@agentic/api`
+- **WHEN** `pnpm turbo build` is run for `@andrewcrobertson/api`
 - **THEN** `dist/index.js` is produced as a single self-contained bundle
 
 #### Scenario: Workspace deps are bundled, not external
 
 - **WHEN** the built `dist/index.js` is inspected
-- **THEN** it contains no runtime `require`/`import` of `@agentic/` packages
+- **THEN** it contains no runtime `require`/`import` of `@andrewcrobertson/` packages
 
 ### Requirement: Docker Image
 
@@ -90,18 +90,18 @@ The app SHALL have a `Dockerfile` using a multi-stage build. The build stage SHA
 
 ### Requirement: npm Publish to GitHub Packages
 
-The `@agentic/api` package SHALL be published to GitHub Packages when a changesets "Version Packages" PR is merged to `main`.
+The `@andrewcrobertson/api` package SHALL be published to GitHub Packages when a changesets "Version Packages" PR is merged to `main`.
 
 #### Scenario: Package is published on changeset merge
 
-- **WHEN** a "Version Packages" PR is merged to main containing a changeset for `@agentic/api`
-- **THEN** the GitHub Actions publish workflow publishes `@agentic/api` to GitHub Packages (npm registry)
+- **WHEN** a "Version Packages" PR is merged to main containing a changeset for `@andrewcrobertson/api`
+- **THEN** the GitHub Actions publish workflow publishes `@andrewcrobertson/api` to GitHub Packages (npm registry)
 
 ### Requirement: Docker Publish to GitHub Container Registry
 
-A Docker image for `@agentic/api` SHALL be built and pushed to `ghcr.io` when a changesets "Version Packages" PR is merged to `main`. The image SHALL be tagged with the package version and `latest`.
+A Docker image for `@andrewcrobertson/api` SHALL be built and pushed to `ghcr.io` when a changesets "Version Packages" PR is merged to `main`. The image SHALL be tagged with the package version and `latest`.
 
 #### Scenario: Docker image is pushed on changeset merge
 
-- **WHEN** a "Version Packages" PR is merged to main containing a changeset for `@agentic/api`
+- **WHEN** a "Version Packages" PR is merged to main containing a changeset for `@andrewcrobertson/api`
 - **THEN** a Docker image tagged with the new version and `latest` is pushed to `ghcr.io`

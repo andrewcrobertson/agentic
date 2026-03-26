@@ -41,16 +41,16 @@ importers:
         specifier: ^4.18.0
         version: 4.22.1
     devDependencies:
-      "@agentic/eslint":
+      "@andrewcrobertson/eslint":
         specifier: workspace:*
         version: link:../../packages.config/eslint
-      "@agentic/prettier":
+      "@andrewcrobertson/prettier":
         specifier: workspace:*
         version: link:../../packages.config/prettier
-      "@agentic/system.logging":
+      "@andrewcrobertson/system.logging":
         specifier: workspace:*
         version: link:../../packages.lib/system.logging
-      "@agentic/typescript":
+      "@andrewcrobertson/typescript":
         specifier: workspace:*
         version: link:../../packages.config/typescript
       "@tsconfig/recommended":
@@ -98,13 +98,13 @@ importers:
 
   packages.lib/system.logging:
     devDependencies:
-      "@agentic/eslint":
+      "@andrewcrobertson/eslint":
         specifier: workspace:*
         version: link:../../packages.config/eslint
-      "@agentic/prettier":
+      "@andrewcrobertson/prettier":
         specifier: workspace:*
         version: link:../../packages.config/prettier
-      "@agentic/typescript":
+      "@andrewcrobertson/typescript":
         specifier: workspace:*
         version: link:../../packages.config/typescript
       typescript:

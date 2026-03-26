@@ -1,4 +1,4 @@
-# @agentic/typescript
+# @andrewcrobertson/typescript
 
 ## 0.0.1
 
