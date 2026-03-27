@@ -1,20 +1,61 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+context: |
+  ## Project
+  Name: agentic
+  Stage: early-stage startup — minimise cost and vendor lock-in
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
+  ## Tech Stack
+  - Language: TypeScript (strict)
+  - Runtime: Node.js 22 LTS
+  - Package manager: pnpm workspaces
+  - Build orchestration: Turborepo
+  - Build tool: Vite (library mode for packages.lib/, SSR mode for packages.apps/)
+  - Test runner: Vitest
+  - Linter: ESLint (flat config)
+  - Formatter: Prettier (auto-run via husky pre-commit + lint-staged)
+  - Commits: Conventional Commits enforced via commitlint
+  - Versioning: Changesets (@changesets/cli)
+  - Container: Docker multi-stage builds, node:22-slim base
+  - CI/CD: GitHub Actions (turbo cache via actions/cache)
+  - Env vars: @dotenvx/dotenvx
+
+  ## Monorepo Structure
+  Packages are grouped by type using packages.XXX/ directories:
+  - packages.config/  — shared tooling configs (eslint, typescript, prettier)
+  - packages.lib/     — shared libraries (private, not published)
+  - packages.apps/    — runnable applications (published to GitHub Packages + ghcr.io)
+
+  ## Package Scope
+  All packages use the @andrewcrobertson/ scope (e.g. @andrewcrobertson/system.logging).
+  Config and lib packages are private. App packages are published.
+
+  ## TypeScript
+  - All packages extend @andrewcrobertson/typescript (based on @tsconfig/recommended, minimal overrides)
+  - Consuming packages declare per-package tsconfig paths mapping workspace deps to their src/index.ts
+    (e.g. "@andrewcrobertson/system.logging": ["../../packages.lib/system.logging/src/index.ts"])
+  - This allows typecheck to run without a prior build
+  - Vite resolve.alias mirrors tsconfig paths so workspace deps are bundled into app output at build time
+  - App packages keep workspace deps in devDependencies (bundled, not needed at runtime)
+
+  ## Code Conventions
+  - Factory pattern: each package exports Foo.create(options): IFoo — the internal class is never exported
+  - Composition root: app packages wire all dependencies in src/composition/; no new/create() calls elsewhere
+  - Interfaces are prefixed with I (e.g. ILogger, IServer)
+  - Unit tests: co-located as *.test.ts, test handlers in isolation (no server binding)
+  - Integration tests: co-located as *.integration.test.ts, make real HTTP requests
+
+  ## Publishing & Deployment
+  - Publish workflow is changesets-driven: changesets/action opens "Version Packages" PR on push to main;
+    merging publishes npm to GitHub Packages and pushes Docker image to ghcr.io
+  - Docker uses pnpm deploy --prod for self-contained production images
+
+rules:
+  proposal:
+    - Reference the package scope (@andrewcrobertson/) when naming packages
+    - Flag if a change would add a new runtime dependency to an app package (should usually be devDep + bundled)
+    - Note if a new packages.lib/ package should be private
+  tasks:
+    - Include a tsconfig paths entry task whenever a new workspace dep is added to a consuming package
+    - Include a vite resolve.alias task alongside any tsconfig paths task for app packages
+    - Always include an end-to-end verification group as the final task group

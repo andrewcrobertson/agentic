@@ -59,7 +59,7 @@ This skill allows you to batch-archive changes, handling spec conflicts intellig
 
    A conflict exists when 2+ selected changes have delta specs for the same capability.
 
-5. **Resolve conflicts andrewcrobertsonally**
+5. **Resolve conflicts agentically**
 
    **For each conflict**, investigate the codebase:
 
